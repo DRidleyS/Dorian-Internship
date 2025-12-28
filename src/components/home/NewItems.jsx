@@ -5,10 +5,10 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Skeleton from "../UI/Skeleton";
 import axios from "axios";
+import FormatCountdown from "../UI/FormatCountdown";
 
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
-  const [currentTime, setCurrentTime] = useState(Date.now());
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,28 +29,6 @@ const NewItems = () => {
     fetchNewItems();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(Date.now());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const formatCountdown = (expiryDate) => {
-    const timeLeft = expiryDate - currentTime;
-
-    if (timeLeft <= 0) {
-      return "0d 0h 0m 0s";
-    }
-
-    const days = Math.floor(timeLeft / 1000 / 60 / 60 / 24);
-    const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24);
-    const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
-    const seconds = Math.floor((timeLeft / 1000) % 60);
-
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  };
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -182,7 +160,7 @@ const NewItems = () => {
                         </Link>
                       </div>
                       <div className="de_countdown">
-                        {formatCountdown(newItem.expiryDate)}
+                        <FormatCountdown expiryDate={newItem.expiryDate} />
                       </div>
 
                       <div className="nft__item_wrap">
