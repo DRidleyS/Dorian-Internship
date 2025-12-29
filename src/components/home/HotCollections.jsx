@@ -167,7 +167,7 @@ const HotCollections = () => {
 
                       <div className="nft_coll_info">
                         <Link to={`/author/${collection.authorId}`}>
-                          <h4>{collection.authorName || "Pinky Ocean"}</h4>
+                          <h4>{collection.title || "Pinky Ocean"}</h4>
                         </Link>
                         <span>{collection.code || "ERC-192"}</span>
                       </div>
