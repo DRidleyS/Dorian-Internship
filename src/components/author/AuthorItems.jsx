@@ -87,7 +87,7 @@ const AuthorItems = ({ nftCollection, loading }) => {
                           </div>
                         </div>
                       </div>
-                      <Link to={`/item-details/${authorItem.id}`}>
+                      <Link to={`/item-details/${authorItem.nftId}`}>
                         <img
                           src={authorItem.nftImage}
                           className="lazy nft__item_preview"
@@ -96,7 +96,7 @@ const AuthorItems = ({ nftCollection, loading }) => {
                       </Link>
                     </div>
                     <div className="nft__item_info">
-                      <Link to={`/item-details/${authorItem.id}`}>
+                      <Link to={`/item-details/${authorItem.nftId}`}>
                         <h4>{authorItem.title}</h4>
                       </Link>
                       <div className="nft__item_price">
